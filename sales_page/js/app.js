@@ -134,21 +134,6 @@ for (var m = 0; m < 15; m++) {
 
 //store the hours in an array
 //store the morning hours
-// var hourAm = 5;
-// var hourList1 = [];
-// for (var j = 6; j < 12; j++) {
-//   hourAm++;
-//   hourList1.push(hourAm + 'am');
-// }
-// hourList1.push('12pm');
-// //store the after hours into the same array
-// var hourPm = 0;
-// for (var k = 1; k < 9; k++) {
-//   hourPm++;
-//   hourList1.push(hourPm + 'pm');
-//   console.log(hourList1);
-// }
-
 
 var hourList = [];
 var hourText = 6;
@@ -171,14 +156,11 @@ for (j = 6; j < 21; j++) {
   }
 }
 
-
-
 // generate the list on the browser
 //The list should have
 // hour
 // number of cookies-per hour and total
 // get (from the DOM) who the parent element is going to be. where am I attaching this new element
-
 
 var parentElement = document.getElementById('sales');
 var article = document.createElement('article');
