@@ -104,15 +104,61 @@ console.log(alkiSales);
 console.log(alkiSales.getSalesNumber());
 
 //call objects 15 times for each location
-for(var i = 0; i < 16; i++) {
-  var salesPerHour = pikeSales.getSalesNumber();
-  console.log(salesPerHour);
+var pikeSalesPerHourList = [];
+var airportSalesPerHourList = [];
+var seattleCenterSalesPerHourList = [];
+var capitalHillSalesPerHourList = [];
+var alkiSalesPerHourList = [];
+for(var i = 0; i < 15; i++) {
+  var pikeSalesPerHour = pikeSales.getSalesNumber();
+  var airportSalesPerHour = airportSales.getSalesNumber();
+  var seattleCenterSalesPerHour = seattleCenterSales.getSalesNumber();
+  var capitalHillSalesPerHour = capitalHillSales.getSalesNumber();
+  var alkiSalesPerHour = alkiSales.getSalesNumber();
+  pikeSalesPerHourList.push(pikeSalesPerHour);
+  // console.log(pikeSalesPerHourList);
+  // console.log(j);
+  airportSalesPerHourList.push(airportSalesPerHour);
+  seattleCenterSalesPerHourList.push(seattleCenterSalesPerHour);
+  capitalHillSalesPerHourList.push(capitalHillSalesPerHour);
+  alkiSalesPerHourList.push(alkiSalesPerHour);
 }
 
+//calculate the total cookie numbers
 
+//loop around the hours
+var hourAm = 5;
+var hourList1 = [];
+for (var j = 6; j < 12; j++) {
+  hourAm++;
+  hourList1.push(hourAm + 'am');
+}
+hourList1.push('12pm');
 
+var hourPm = 0;
+for (var k = 1; k < 9; k++) {
+  hourPm++;
+  hourList1.push(hourPm + 'pm');
+  console.log(hourList1);
+}
 
-//
+var pikeSum = 0;
+var airportSum = 0;
+var seattleCenterSum = 0;
+var capitalHillSum = 0;
+var alkiSum = 0;
+for (var m = 0; m < 15; m++) {
+  pikeSum += pikeSalesPerHourList[m];
+  airportSum += airportSalesPerHourList[m];
+  seattleCenterSum += seattleCenterSalesPerHourList[m];
+  capitalHillSum += capitalHillSalesPerHourList[m];
+  alkiSum += alkiSalesPerHourList[m];
+}
+
+// generate the list on the browser
+// we need to:
+// get (from the DOM) who the parent element is going to be. where am I attaching this new element
+
 
 //The list should have
 // hour
