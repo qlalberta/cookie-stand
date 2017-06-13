@@ -238,7 +238,7 @@ for (var r = 0; r < 16; r++) {
   var li_5 = document.createElement('li');
   ul_5.appendChild(li_5);
   if (r != 15 ) {
-    li_5.textContent = hourList1[q] + ': ' + alkiSalesPerHourList[q] + ' cookies';
+    li_5.textContent = hourList1[r] + ': ' + alkiSalesPerHourList[r] + ' cookies';
   } else {
     li_5.textContent = 'Total: ' + alkiSum + ' cookies';
   }
