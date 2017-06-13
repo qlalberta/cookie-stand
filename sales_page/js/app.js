@@ -157,11 +157,7 @@ for (var k = 1; k < 9; k++) {
 // get (from the DOM) who the parent element is going to be. where am I attaching this new element
 
 
-var parentElement1 = document.getElementById('pike');
-var parentElement2 = document.getElementById('seattleAirport');
-var parentElement3 = document.getElementById('seattleCenter');
-var parentElement4 = document.getElementById('capitalHill');
-var parentElement5 = document.getElementById('Alki');
+var parentElement1 = document.getElementById('sales');
 
 var h2_1 = document.createElement('h2');
 parentElement1.appendChild(h2_1);
@@ -181,7 +177,7 @@ for (var n = 0; n < 16; n++) {
 }
 
 var h2_2 = document.createElement('h2');
-parentElement2.appendChild(h2_2);
+parentElement1.appendChild(h2_2);
 h2_2.textContent = avgCookie[1][0];
 var ul_2 = document.createElement('ul');
 h2_2.appendChild(ul_2);
@@ -197,7 +193,7 @@ for (var o = 0; o < 16; o++) {
 }
 
 var h2_3 = document.createElement('h2');
-parentElement2.appendChild(h2_3);
+parentElement1.appendChild(h2_3);
 h2_3.textContent = avgCookie[2][0];
 var ul_3 = document.createElement('ul');
 h2_3.appendChild(ul_3);
@@ -213,7 +209,7 @@ for (var p = 0; p < 16; p++) {
 }
 
 var h2_4 = document.createElement('h2');
-parentElement2.appendChild(h2_4);
+parentElement1.appendChild(h2_4);
 h2_4.textContent = avgCookie[3][0];
 var ul_4 = document.createElement('ul');
 h2_4.appendChild(ul_4);
@@ -229,7 +225,7 @@ for (var q = 0; q < 16; q++) {
 }
 
 var h2_5 = document.createElement('h2');
-parentElement2.appendChild(h2_5);
+parentElement1.appendChild(h2_5);
 h2_5.textContent = avgCookie[4][0];
 var ul_5 = document.createElement('ul');
 h2_5.appendChild(ul_5);
