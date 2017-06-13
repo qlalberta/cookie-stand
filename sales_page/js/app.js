@@ -156,11 +156,32 @@ for (var m = 0; m < 15; m++) {
 }
 
 // generate the list on the browser
-// we need to:
-// get (from the DOM) who the parent element is going to be. where am I attaching this new element
-
-
 //The list should have
 // hour
 // number of cookies
 // store it in the list
+// we need to:
+// get (from the DOM) who the parent element is going to be. where am I attaching this new element
+var parentElement = document.getElementById('pike');
+
+//creat new elements
+var article = document.createElement('article');
+parentElement.appendChild(article);
+
+// for(var o = 0;o < )
+var h2 = document.createElement('h2');
+article.appendChild(h2);
+h2.textContent = pikeSales.location;
+
+var ul = document.createElement('ul');
+article.appendChild(ul);
+
+for (var n = 0; n < 16; n++) {
+  var li = document.createElement('li');
+  ul.appendChild(li);
+  if (n != 15 ) {
+    li.textContent = hourList1[n] + ': ' + alkiSalesPerHourList[n] + ' cookies';}
+  else {
+    li.textContent = 'Total: ' + pikeSum + ' cookies';
+  }
+}
