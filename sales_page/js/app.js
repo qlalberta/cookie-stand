@@ -21,8 +21,6 @@ function Sales (location, avgCookie, minCus, maxCus) {
   this.avgCookie = avgCookie;
   this.minCus = minCus;
   this.maxCus = maxCus;
-  // this.sales = this.getSales();
-  // this.salesPerHourList = this.getSalesPerHourList();
 }
 
 Sales.prototype.getSales = function () {
@@ -31,57 +29,47 @@ Sales.prototype.getSales = function () {
 
 // Trying to use a prototype function (not working yet)
 // Sales.prototype.getSalesPerHourList = function () {
-//   for(i = 0; i < 15; i++) {
-//     // this.salesPerHourList = [];
+//   for(var i = 0; i < 15; i++) {
+//     this.getSales();
+//     console.log('---------');
 //     console.log(this.sales);
-//     this.salesPerHourList = this.salesPerHourList.push(this.sales);
-//     console.log(this.sales);
+//     this.salesPerHourList[i] = this.sales;
 //   }
 // };
 
 // create functions for the five locations
 var pikeSales = new Sales(avgCookie[0][0],avgCookie[0][1],minCustomer[0][1],maxCustomer[0][1]);
 pikeSales.getSales();
-console.log(pikeSales.sales);
 
 var airportSales = new Sales(avgCookie[1][0],avgCookie[1][1],minCustomer[1][1],maxCustomer[1][1]);
 airportSales.getSales();
-console.log(airportSales.sales);
 
 var seattleCenterSales = new Sales(avgCookie[0][0],avgCookie[2][1],minCustomer[2][1],maxCustomer[2][1]);
 seattleCenterSales.getSales();
-console.log(seattleCenterSales.sales);
 
 var capitalHillSales = new Sales(avgCookie[3][0],avgCookie[3][1],minCustomer[3][1],maxCustomer[3][1]);
 capitalHillSales.getSales();
-console.log(capitalHillSales.sales);
 
 var alkiSales = new Sales(avgCookie[4][0],avgCookie[4][1],minCustomer[4][1],maxCustomer[4][1]);
 alkiSales.getSales();
-console.log(alkiSales.sales);
 
-// //store sales per hour in an array
-//test the prototype function
-// pikeSales.getSalesPerHourList();
-// console.log('--------');
-// console.log(pikeSales.salesPerHourList);
-//
+//store sales per hour in an array
 var pikeSalesPerHourList = [];
 var airportSalesPerHourList = [];
 var seattleCenterSalesPerHourList = [];
 var capitalHillSalesPerHourList = [];
 var alkiSalesPerHourList = [];
 for(var i = 0; i < 15; i++) {
-  var pikeSalesPerHour = pikeSales.sales;
-  var airportSalesPerHour = airportSales.sales;
-  var seattleCenterSalesPerHour = seattleCenterSales.sales;
-  var capitalHillSalesPerHour = capitalHillSales.sales;
-  var alkiSalesPerHour = alkiSales.sales;
-  pikeSalesPerHourList.push(pikeSalesPerHour);
-  airportSalesPerHourList.push(airportSalesPerHour);
-  seattleCenterSalesPerHourList.push(seattleCenterSalesPerHour);
-  capitalHillSalesPerHourList.push(capitalHillSalesPerHour);
-  alkiSalesPerHourList.push(alkiSalesPerHour);
+  pikeSales.getSales();
+  airportSales.getSales();
+  seattleCenterSales.getSales();
+  capitalHillSales.getSales();
+  alkiSales.getSales();
+  pikeSalesPerHourList[i] = pikeSales.sales;
+  airportSalesPerHourList[i] = airportSales.sales;
+  seattleCenterSalesPerHourList[i] = seattleCenterSales.sales;
+  capitalHillSalesPerHourList[i] = capitalHillSales.sales;
+  alkiSalesPerHourList[i] = alkiSales.sales;
 }
 console.log(pikeSalesPerHourList);
 console.log(airportSalesPerHourList);
@@ -89,29 +77,29 @@ console.log(seattleCenterSalesPerHourList);
 console.log(capitalHillSalesPerHourList);
 console.log(alkiSalesPerHourList);
 
+
 // // //calculate the total cookie numbers
-// var pikeSum = 0;
-// var airportSum = 0;
-// var seattleCenterSum = 0;
-// var capitalHillSum = 0;
-// var alkiSum = 0;
-// for (var m = 0; m < 15; m++) {
-//   pikeSum += pikeSalesPerHourList[m];
-//   airportSum += airportSalesPerHourList[m];
-//   seattleCenterSum += seattleCenterSalesPerHourList[m];
-//   capitalHillSum += capitalHillSalesPerHourList[m];
-//   alkiSum += alkiSalesPerHourList[m];
-// }
+var pikeSum = 0;
+var airportSum = 0;
+var seattleCenterSum = 0;
+var capitalHillSum = 0;
+var alkiSum = 0;
+for (var m = 0; m < 15; m++) {
+  pikeSum += pikeSalesPerHourList[m];
+  airportSum += airportSalesPerHourList[m];
+  seattleCenterSum += seattleCenterSalesPerHourList[m];
+  capitalHillSum += capitalHillSalesPerHourList[m];
+  alkiSum += alkiSalesPerHourList[m];
+}
 //
 // //store the hours in an array
-var hourList = [];
+var hourList = [''];
 var hourText = 6;
 var j = 6;
 for (j = 6; j < 21; j++) {
   if (hourText < 12) {
     hourList.push(hourText + 'am');
     hourText++;
-    console.log(hourList);
   }
   else if (hourText == 12) {
     hourList.push(hourText + 'pm');
@@ -124,31 +112,35 @@ for (j = 6; j < 21; j++) {
     hourText++;
   }
 }
-console.log(hourList);
-
-
-// // generate the list on the browser
-// //The list should have
-// // hour
-// // number of cookies-per hour and total
-// // get (from the DOM) who the parent element is going to be. where am I attaching this new element
-//
-//create a table
+console.log(hourList)
+// // // generate the list on the browser
+// // //The list should have
+// // // hour
+// // // number of cookies-per hour and total
+// // // get (from the DOM) who the parent element is going to be. where am I attaching this new element
+// //
+// //create a table
 var parentElement = document.getElementById('sales');
+var article = document.createElement('article');
+parentElement.appendChild(article);
 var table = document.createElement('table');
-parentElement.appendChild(table);
+article.appendChild(table);
 // table.prototype.render = render;
 
-// function render_header () {
 var row = document.createElement('tr');
-for (var r = 0; r < hourList.length; r++) {
+table.appendChild(row);
+for (var k = 0; k < hourList.length; k++) {
   var th = document.createElement('th');
-  th.textContent = hourList[j];
-  table.appendChild(row);
+  console.log(hourList[k]);
+  th.textContent = hourList[k];
   row.appendChild(th);
-}// }
+}
 
+function render () {
 
+}
+
+// reader_header();
 // var parentElement = document.getElementById('sales');
 // var article = document.createElement('article');
 // parentElement.appendChild(article);
