@@ -5,10 +5,6 @@
 var avgCookie = [['1st and Pike', 6.3], ['SeaTac Airport', 1.2], ['Seattle Center', 3.7], ['Capitol Hill', 2.3], ['Alki', 4.6]];
 var minCustomer = [['1st and Pike', 23], ['SeaTac Airport', 3], ['Seattle Center', 11], ['Capitol Hill', 20], ['Alki', 2]];
 var maxCustomer = [['1st and Pike', 65], ['SeaTac Airport', 24], ['Seattle Center', 38], ['Capitol Hill', 38], ['Alki', 16]];
-// var i = 0;
-// var salesPerHour = [];
-//create an object store max, min and average cookies for each location
-//need an object for each location to calculate sales whch equals the random number of customers times average cookies
 
 //generate ranndom numbers of customer per hour
 function randomCustomerNumber (min, max) {
@@ -21,78 +17,60 @@ function Sales (location, avgCookie, minCus, maxCus) {
   this.avgCookie = avgCookie;
   this.minCus = minCus;
   this.maxCus = maxCus;
+  this.salesPerHourList = [];
+  this.sum = 0;
+  this.hour = '';
 }
 
+//create prototype method getSales()
 Sales.prototype.getSales = function () {
   this.sales = Math.floor(randomCustomerNumber(this.minCus, this.maxCus) * this.avgCookie);
 };
 
-// Trying to use a prototype function (not working yet)
-// Sales.prototype.getSalesPerHourList = function () {
-//   for(var i = 0; i < 15; i++) {
-//     this.getSales();
-//     console.log('---------');
-//     console.log(this.sales);
-//     this.salesPerHourList[i] = this.sales;
-//   }
-// };
+// create prototype methodgetSalesPerHourList()
+Sales.prototype.getSalesPerHourList = function () {
+  for(var i = 0; i < 15; i++) {
+    this.getSales();
+    this.salesPerHourList[i] = this.sales;
+  }
+};
 
-// create functions for the five locations
+//create prototype method getSum()
+Sales.prototype.getSum = function () {
+  for(var j = 0; j < 15; j++) {
+    this.getSalesPerHourList();
+    this.sum += this.salesPerHourList[j];
+  }
+};
+
+// create new functions for the five locations
 var pikeSales = new Sales(avgCookie[0][0],avgCookie[0][1],minCustomer[0][1],maxCustomer[0][1]);
 pikeSales.getSales();
+pikeSales.getSalesPerHourList();
+pikeSales.getSum();
+// pikeSales.render();
 
 var airportSales = new Sales(avgCookie[1][0],avgCookie[1][1],minCustomer[1][1],maxCustomer[1][1]);
 airportSales.getSales();
+airportSales.getSalesPerHourList();
+airportSales.getSum();
 
 var seattleCenterSales = new Sales(avgCookie[0][0],avgCookie[2][1],minCustomer[2][1],maxCustomer[2][1]);
 seattleCenterSales.getSales();
+seattleCenterSales.getSalesPerHourList();
+seattleCenterSales.getSum();
 
 var capitalHillSales = new Sales(avgCookie[3][0],avgCookie[3][1],minCustomer[3][1],maxCustomer[3][1]);
 capitalHillSales.getSales();
+capitalHillSales.getSalesPerHourList();
+capitalHillSales.getSum();
 
 var alkiSales = new Sales(avgCookie[4][0],avgCookie[4][1],minCustomer[4][1],maxCustomer[4][1]);
 alkiSales.getSales();
+alkiSales.getSalesPerHourList();
+alkiSales.getSum();
 
-//store sales per hour in an array
-var pikeSalesPerHourList = [];
-var airportSalesPerHourList = [];
-var seattleCenterSalesPerHourList = [];
-var capitalHillSalesPerHourList = [];
-var alkiSalesPerHourList = [];
-for(var i = 0; i < 15; i++) {
-  pikeSales.getSales();
-  airportSales.getSales();
-  seattleCenterSales.getSales();
-  capitalHillSales.getSales();
-  alkiSales.getSales();
-  pikeSalesPerHourList[i] = pikeSales.sales;
-  airportSalesPerHourList[i] = airportSales.sales;
-  seattleCenterSalesPerHourList[i] = seattleCenterSales.sales;
-  capitalHillSalesPerHourList[i] = capitalHillSales.sales;
-  alkiSalesPerHourList[i] = alkiSales.sales;
-}
-console.log(pikeSalesPerHourList);
-console.log(airportSalesPerHourList);
-console.log(seattleCenterSalesPerHourList);
-console.log(capitalHillSalesPerHourList);
-console.log(alkiSalesPerHourList);
-
-
-// // //calculate the total cookie numbers
-var pikeSum = 0;
-var airportSum = 0;
-var seattleCenterSum = 0;
-var capitalHillSum = 0;
-var alkiSum = 0;
-for (var m = 0; m < 15; m++) {
-  pikeSum += pikeSalesPerHourList[m];
-  airportSum += airportSalesPerHourList[m];
-  seattleCenterSum += seattleCenterSalesPerHourList[m];
-  capitalHillSum += capitalHillSalesPerHourList[m];
-  alkiSum += alkiSalesPerHourList[m];
-}
-//
-// //store the hours in an array
+//store the hour output in an array
 var hourList = [''];
 var hourText = 6;
 var j = 6;
@@ -112,21 +90,22 @@ for (j = 6; j < 21; j++) {
     hourText++;
   }
 }
-console.log(hourList)
-// // // generate the list on the browser
-// // //The list should have
-// // // hour
-// // // number of cookies-per hour and total
-// // // get (from the DOM) who the parent element is going to be. where am I attaching this new element
-// //
-// //create a table
+
+// generate the table on the browser
+//The table should have
+// hour
+// number of cookies-per hour and total
+// get (from the DOM) who the parent element is going to be. where am I attaching this new element
+
+//create a table
 var parentElement = document.getElementById('sales');
 var article = document.createElement('article');
 parentElement.appendChild(article);
 var table = document.createElement('table');
 article.appendChild(table);
-// table.prototype.render = render;
 
+// table.prototype.render = render;
+// create the table header
 var row = document.createElement('tr');
 table.appendChild(row);
 for (var k = 0; k < hourList.length; k++) {
@@ -134,11 +113,11 @@ for (var k = 0; k < hourList.length; k++) {
   console.log(hourList[k]);
   th.textContent = hourList[k];
   row.appendChild(th);
-}
-
-function render () {
-
-}
+// }
+//
+// function render () {
+//
+// }
 
 // reader_header();
 // var parentElement = document.getElementById('sales');
