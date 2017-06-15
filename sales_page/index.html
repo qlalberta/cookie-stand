@@ -4,8 +4,24 @@
   <title>sales page</title>
 </head>
 <body>
-  <div id='sales'>
-    <article>
+  <div id="sales">
+    <article
+      <form id="addSalesForm">
+        <fieldset>
+          <legend>Sales information</legend>
+          <lable>Location</label>
+            <input location = "loaction" type = "text"/>
+          <label>Avg cookies</label>
+            <input avgCookies = "avgCookies" type = "text"/>
+          <label>min Customer</label>
+            <input minCustomer = "minCustomer" type = "text"/>
+          <label>max Customer</label>
+            <input maxCustomer = "maxCustomer" type = "text"/>
+          </fieldset>
+            <button type = "submit">Submit</button>
+       </form>
+
+
     </article>
   </div>
   <script src="js/app.js"></script>
