@@ -145,13 +145,13 @@ alkiSales.render();
 
 var addSalesForm = document.getElementById('addSalesForm');
 
-addSalesForm.addEventListener('submit',
-function (event) {
+addSalesForm.addEventListener('submit', function (event) {
+  console.log('click');
   event.preventDefalut();
   var location = event.target.location.value;
-  var avgCookies = event.target.avgCookieS.value;
-  var minCustomer = event.target.avgCookieS.value;
-  var maxCustomer = event.target.avgCookieS.value;
+  var avgCookies = event.target.avgCookies.value;
+  var minCustomer = event.target.avgCookies.value;
+  var maxCustomer = event.target.avgCookies.value;
 
   var newSales = new Sales(location, avgCookies, minCustomer, maxCustomer);
   newSales.location = location;
