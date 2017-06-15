@@ -5,7 +5,7 @@
 var avgCookie = [['1st and Pike', 6.3], ['SeaTac Airport', 1.2], ['Seattle Center', 3.7], ['Capitol Hill', 2.3], ['Alki', 4.6]];
 var minCustomer = [['1st and Pike', 23], ['SeaTac Airport', 3], ['Seattle Center', 11], ['Capitol Hill', 20], ['Alki', 2]];
 var maxCustomer = [['1st and Pike', 65], ['SeaTac Airport', 24], ['Seattle Center', 38], ['Capitol Hill', 38], ['Alki', 16]];
-
+Location = [avgCookie[0][0], avgCookie[1][0], avgCookie[2][0], avgCookie[3][0]];
 //generate ranndom numbers of customer per hour
 function randomCustomerNumber (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -129,6 +129,31 @@ airportSales.render();
 seattleCenterSales.render();
 capitalHillSales.render();
 alkiSales.render();
+
+// generate form from input and append it to the table
+var salesForm = document.getElementById('addSalesForm');
+
+salesForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  var location = event.target.location.value;
+  var avgCookie = event.target.avgCookie.value;
+  var minCustomer = event.target.minCustomer.value;
+  var maxCustomer = event.target.maxCustomer.value;
+  var newSales = new Sales(location, avgCookie, minCustomer, maxCustomer);
+  newSales.location = location;
+  newSales.avgCookie = avgCookie;
+  newSales.minCustomer = minCustomer;
+  newSales.maxCustomer = maxCustomer;
+  for (var m = 0; m < Location.length; m++)
+    if (newSales.location == Location[m]) {
+      alert ('Please input a different location from what is in the table.');
+    };
+  // newSales.inputValidation();
+  newSales.getSalesPerHourList();
+  newSales.getSum();
+  newSales.render();
+  addSalesForm.reset();
+});
 
 //TODO: Strech goal
 
