@@ -124,7 +124,6 @@ function render () {
   table.appendChild(row_1);
 }
 
-//call functions to display the data in form
 pikeSales.render();
 airportSales.render();
 seattleCenterSales.render();
