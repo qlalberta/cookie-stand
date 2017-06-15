@@ -5,7 +5,7 @@
 var avgCookie = [['1st and Pike', 6.3], ['SeaTac Airport', 1.2], ['Seattle Center', 3.7], ['Capitol Hill', 2.3], ['Alki', 4.6]];
 var minCustomer = [['1st and Pike', 23], ['SeaTac Airport', 3], ['Seattle Center', 11], ['Capitol Hill', 20], ['Alki', 2]];
 var maxCustomer = [['1st and Pike', 65], ['SeaTac Airport', 24], ['Seattle Center', 38], ['Capitol Hill', 38], ['Alki', 16]];
-// Location = [avgCookie[0][0], avgCookie[1][0], avgCookie[2][0], avgCookie[3][0]];
+
 //generate ranndom numbers of customer per hour
 function randomCustomerNumber (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
