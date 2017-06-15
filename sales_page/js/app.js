@@ -130,8 +130,7 @@ seattleCenterSales.render();
 capitalHillSales.render();
 alkiSales.render();
 
-//TODO: Strech goal
-
+// TODO: Strech goal
 //creater the table footer
 // var row_2 = document.createElement('tr');
 // var td = document.createElement('td');
