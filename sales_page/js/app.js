@@ -43,8 +43,12 @@ Sales.prototype.getSum = function () {
   }
 };
 
+//create prototype method inputValidation()
+Sales.prototype.inputValidation = inputValidation;
+
 //create prototype method render()
 Sales.prototype.render = render;
+
 
 // create new functions for the five locations
 var pikeSales = new Sales(avgCookie[0][0],avgCookie[0][1],minCustomer[0][1],maxCustomer[0][1]);
@@ -134,6 +138,11 @@ seattleCenterSales.render();
 capitalHillSales.render();
 alkiSales.render();
 
+//create validation function
+Sales.prototype.inputValidation = inputValidation;
+
+
+
 //create footer
 // var row_0 = document.createElement('tr');
 // table.appendChild(row_0);
@@ -143,25 +152,27 @@ alkiSales.render();
 //   row_0.appendChild(th);
 // }
 
-var addSalesForm = document.getElementById('addSalesForm');
+var salesForm = document.getElementById('addSalesForm');
 
-addSalesForm.addEventListener('submit', function (event) {
-  console.log('click');
-  event.preventDefalut();
+salesForm.addEventListener('submit', function(event) {
+  event.preventDefault();
   var location = event.target.location.value;
-  var avgCookies = event.target.avgCookies.value;
-  var minCustomer = event.target.avgCookies.value;
-  var maxCustomer = event.target.avgCookies.value;
-
-  var newSales = new Sales(location, avgCookies, minCustomer, maxCustomer);
+  var avgCookie = event.target.avgCookie.value;
+  var minCustomer = event.target.minCustomer.value;
+  var maxCustomer = event.target.maxCustomer.value;
+  var newSales = new Sales(location, avgCookie, minCustomer, maxCustomer);
   newSales.location = location;
-  newSales.avgCookies = avgCookies;
+  newSales.avgCookie = avgCookie;
   newSales.minCustomer = minCustomer;
   newSales.maxCustomer = maxCustomer;
-  newSales.getSales();
   newSales.getSalesPerHourList();
   newSales.getSum();
   newSales.render();
-  newSales.reset();
-}
-);
+  addSalesForm.reset();
+});
+
+
+// function addEventListener (type, callback) {
+//   // go find that event for what I was given
+//   callback(event);
+// }
