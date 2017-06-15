@@ -19,7 +19,7 @@ function Sales (location, avgCookie, minCus, maxCus) {
   this.maxCus = maxCus;
   this.salesPerHourList = [];
   this.sum = 0;
-  this.hour = '';
+  this.sumList = [];
 }
 
 //create prototype method getSales()
@@ -43,10 +43,7 @@ Sales.prototype.getSum = function () {
   }
 };
 
-//create prototype method inputValidation()
-// Sales.prototype.inputValidation = inputValidation;
-
-//create prototype method render()
+//create prototype method render(); specify the function at the bottom
 Sales.prototype.render = render;
 
 // create new functions for the five locations
@@ -127,30 +124,11 @@ function render () {
   table.appendChild(row_1);
 }
 
-//call functions to display the data in form
 pikeSales.render();
 airportSales.render();
 seattleCenterSales.render();
 capitalHillSales.render();
 alkiSales.render();
-
-//create validation function
-// Sales.prototype.inputValidation = inputValidation;
-// function inputValidation () {
-//   for (var m = 0; m < Location.length; m++)
-//     if (newSales.location == Location[m]) {
-//       alert ('Please input a different location from what is in the table.');
-//     };
-// }
-
-//create footer
-// var row_0 = document.createElement('tr');
-// table.appendChild(row_0);
-// for (var m = 0; m < 16; m++) {
-//   var td = document.createElement('td');
-//   td.textContent = this.sum;
-//   row_0.appendChild(th);
-// }
 
 // generate form from input and append it to the table
 var salesForm = document.getElementById('addSalesForm');
@@ -176,3 +154,17 @@ salesForm.addEventListener('submit', function(event) {
   newSales.render();
   addSalesForm.reset();
 });
+
+//TODO: Strech goal
+
+//creater the table footer
+// var row_2 = document.createElement('tr');
+// var td = document.createElement('td');
+// td.textContent = 'Totals';
+// row_2.appendChild(td);
+// for (var m = 0; m < 15; m++) {
+//   td = document.createElement('td');
+//   td.textContent = this.salesPerHourList;
+//   row_2.appendChild(td);
+// }
+// table.appendChild(row_2);
