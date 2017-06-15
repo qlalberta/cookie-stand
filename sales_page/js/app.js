@@ -5,7 +5,7 @@
 var avgCookie = [['1st and Pike', 6.3], ['SeaTac Airport', 1.2], ['Seattle Center', 3.7], ['Capitol Hill', 2.3], ['Alki', 4.6]];
 var minCustomer = [['1st and Pike', 23], ['SeaTac Airport', 3], ['Seattle Center', 11], ['Capitol Hill', 20], ['Alki', 2]];
 var maxCustomer = [['1st and Pike', 65], ['SeaTac Airport', 24], ['Seattle Center', 38], ['Capitol Hill', 38], ['Alki', 16]];
-
+// Location = [avgCookie[0][0], avgCookie[1][0], avgCookie[2][0], avgCookie[3][0]];
 //generate ranndom numbers of customer per hour
 function randomCustomerNumber (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -19,7 +19,7 @@ function Sales (location, avgCookie, minCus, maxCus) {
   this.maxCus = maxCus;
   this.salesPerHourList = [];
   this.sum = 0;
-  this.hour = '';
+  this.sumList = [];
 }
 
 //create prototype method getSales()
@@ -43,12 +43,14 @@ Sales.prototype.getSum = function () {
   }
 };
 
+//create prototype method render(); specify the function at the bottom
+Sales.prototype.render = render;
+
 // create new functions for the five locations
 var pikeSales = new Sales(avgCookie[0][0],avgCookie[0][1],minCustomer[0][1],maxCustomer[0][1]);
 pikeSales.getSales();
 pikeSales.getSalesPerHourList();
 pikeSales.getSum();
-// pikeSales.render();
 
 var airportSales = new Sales(avgCookie[1][0],avgCookie[1][1],minCustomer[1][1],maxCustomer[1][1]);
 airportSales.getSales();
@@ -92,11 +94,6 @@ for (j = 6; j < 21; j++) {
 }
 
 // generate the table on the browser
-//The table should have
-// hour
-// number of cookies-per hour and total
-// get (from the DOM) who the parent element is going to be. where am I attaching this new element
-
 //create a table
 var parentElement = document.getElementById('sales');
 var article = document.createElement('article');
@@ -104,101 +101,46 @@ parentElement.appendChild(article);
 var table = document.createElement('table');
 article.appendChild(table);
 
-// table.prototype.render = render;
 // create the table header
-var row = document.createElement('tr');
-table.appendChild(row);
+var row_0 = document.createElement('tr');
+table.appendChild(row_0);
 for (var k = 0; k < hourList.length; k++) {
   var th = document.createElement('th');
-  console.log(hourList[k]);
   th.textContent = hourList[k];
-  row.appendChild(th);
-// }
-//
-// function render () {
-//
-// }
+  row_0.appendChild(th);
+}
 
-// reader_header();
-// var parentElement = document.getElementById('sales');
-// var article = document.createElement('article');
-// parentElement.appendChild(article);
-// var h2_1 = document.createElement('h2');
-// article.appendChild(h2_1);
-// h2_1.textContent = avgCookie[0][0];
-// var ul_1 = document.createElement('ul');
-// article.appendChild(ul_1);
-//
-// for (var n = 0; n < 16; n++) {
-//   var li_1 = document.createElement('li');
-//   ul_1.appendChild(li_1);
-//   if (n != 15 ) {
-//     li_1.textContent = hourList[n] + ': ' + pikeSalesPerHourList[n] + ' cookies';
-//   } else {
-//     li_1.textContent = 'Total: ' + pikeSum + ' cookies';
-//   }
+//other rows for sales from 5 locations.
+function render () {
+  var row_1 = document.createElement('tr');
+  var td = document.createElement('td');
+  td.textContent = this.location;
+  row_1.appendChild(td);
+  for (var l = 0; l < 15; l++) {
+    td = document.createElement('td');
+    td.textContent = this.salesPerHourList[l];
+    row_1.appendChild(td);
+  }
+  table.appendChild(row_1);
+}
+
+//call functions to display the data in form
+pikeSales.render();
+airportSales.render();
+seattleCenterSales.render();
+capitalHillSales.render();
+alkiSales.render();
+
+//TODO: Strech goal
+
+//creater the table footer
+// var row_2 = document.createElement('tr');
+// var td = document.createElement('td');
+// td.textContent = 'Totals';
+// row_2.appendChild(td);
+// for (var m = 0; m < 15; m++) {
+//   td = document.createElement('td');
+//   td.textContent = this.salesPerHourList;
+//   row_2.appendChild(td);
 // }
-//
-// var h2_2 = document.createElement('h2');
-// article.appendChild(h2_2);
-// h2_2.textContent = avgCookie[1][0];
-// var ul_2 = document.createElement('ul');
-// article.appendChild(ul_2);
-//
-// for (var o = 0; o < 16; o++) {
-//   var li_2 = document.createElement('li');
-//   ul_2.appendChild(li_2);
-//   if (o != 15 ) {
-//     li_2.textContent = hourList[o] + ': ' + airportSalesPerHourList[o] + ' cookies';
-//   } else {
-//     li_2.textContent = 'Total: ' + airportSum + ' cookies';
-//   }
-// }
-//
-// var h2_3 = document.createElement('h2');
-// article.appendChild(h2_3);
-// h2_3.textContent = avgCookie[2][0];
-// var ul_3 = document.createElement('ul');
-// article.appendChild(ul_3);
-//
-// for (var p = 0; p < 16; p++) {
-//   var li_3 = document.createElement('li');
-//   ul_3.appendChild(li_3);
-//   if (p != 15 ) {
-//     li_3.textContent = hourList[p] + ': ' + seattleCenterSalesPerHourList[p] + ' cookies';
-//   } else {
-//     li_3.textContent = 'Total: ' + seattleCenterSum + ' cookies';
-//   }
-// }
-//
-// var h2_4 = document.createElement('h2');
-// article.appendChild(h2_4);
-// h2_4.textContent = avgCookie[3][0];
-// var ul_4 = document.createElement('ul');
-// article.appendChild(ul_4);
-//
-// for (var q = 0; q < 16; q++) {
-//   var li_4 = document.createElement('li');
-//   ul_4.appendChild(li_4);
-//   if (q != 15 ) {
-//     li_4.textContent = hourList[q] + ': ' + capitalHillSalesPerHourList[q] + ' cookies';
-//   } else {
-//     li_4.textContent = 'Total: ' + capitalHillSum + ' cookies';
-//   }
-// }
-//
-// var h2_5 = document.createElement('h2');
-// article.appendChild(h2_5);
-// h2_5.textContent = avgCookie[4][0];
-// var ul_5 = document.createElement('ul');
-// article.appendChild(ul_5);
-//
-// for (var r = 0; r < 16; r++) {
-//   var li_5 = document.createElement('li');
-//   ul_5.appendChild(li_5);
-//   if (r != 15 ) {
-//     li_5.textContent = hourList[r] + ': ' + alkiSalesPerHourList[r] + ' cookies';
-//   } else {
-//     li_5.textContent = 'Total: ' + alkiSum + ' cookies';
-//   }
-// }
+// table.appendChild(row_2);
