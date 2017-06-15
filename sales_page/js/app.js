@@ -19,7 +19,6 @@ function Sales (location, avgCookie, minCus, maxCus) {
   this.maxCus = maxCus;
   this.salesPerHourList = [];
   this.sum = 0;
-  this.sumList = [];
 }
 
 //create prototype method getSales()
