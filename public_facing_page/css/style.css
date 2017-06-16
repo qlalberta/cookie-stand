@@ -1,12 +1,17 @@
+/*
+* {
+  border: 2px solid black;
+}*/
+
 body {
   background: black url("../images/image-salmon/gray-ppt-background-19.jpg");
   margin: 0;
   text-align: center;
 }
-
+/*
 #nav {
 text-align: right;
-}
+}*/
 
 #nav li {
   margin: 10px 20px 20px 5px;
