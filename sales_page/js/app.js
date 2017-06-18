@@ -131,13 +131,12 @@ salesForm.addEventListener('submit', function(event) {
   newSales.avgCookie = avgCookie;
   newSales.minCustomer = minCustomer;
   newSales.maxCustomer = maxCustomer;
+  //validate the location
   for (var m = 0; m < Location.length; m++)
     if (newSales.location == Location[m]) {
       alert ('Please input a different location from what is in the table.');
     };
-  // newSales.inputValidation();
   newSales.getSalesPerHourList();
-  newSales.getSum();
   newSales.render();
   addSalesForm.reset();
 });
