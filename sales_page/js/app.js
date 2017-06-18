@@ -18,7 +18,6 @@ function Sales (location, avgCookie, minCus, maxCus) {
   this.minCus = minCus;
   this.maxCus = maxCus;
   this.salesPerHourList = [];
-  this.sum = 0;
 }
 
 //create prototype method getSales()
@@ -34,44 +33,25 @@ Sales.prototype.getSalesPerHourList = function () {
   }
 };
 
-//create prototype method getSum()
-Sales.prototype.getSum = function () {
-  for(var j = 0; j < 15; j++) {
-    this.getSalesPerHourList();
-    this.sum += this.salesPerHourList[j];
-  }
-};
-
 //create prototype method render(); specify the function at the bottom
 Sales.prototype.render = render;
 
 // create new functions for the five locations
 var pikeSales = new Sales(avgCookie[0][0],avgCookie[0][1],minCustomer[0][1],maxCustomer[0][1]);
-pikeSales.getSales();
-pikeSales.getSalesPerHourList();
-pikeSales.getSum();
-
 var airportSales = new Sales(avgCookie[1][0],avgCookie[1][1],minCustomer[1][1],maxCustomer[1][1]);
-airportSales.getSales();
-airportSales.getSalesPerHourList();
-airportSales.getSum();
-
-var seattleCenterSales = new Sales(avgCookie[0][0],avgCookie[2][1],minCustomer[2][1],maxCustomer[2][1]);
-seattleCenterSales.getSales();
-seattleCenterSales.getSalesPerHourList();
-seattleCenterSales.getSum();
-
+var seattleCenterSales =
+  new Sales(avgCookie[2][0],avgCookie[2][1],minCustomer[2][1],maxCustomer[2][1]);
 var capitalHillSales = new Sales(avgCookie[3][0],avgCookie[3][1],minCustomer[3][1],maxCustomer[3][1]);
-capitalHillSales.getSales();
-capitalHillSales.getSalesPerHourList();
-capitalHillSales.getSum();
-
 var alkiSales = new Sales(avgCookie[4][0],avgCookie[4][1],minCustomer[4][1],maxCustomer[4][1]);
-alkiSales.getSales();
-alkiSales.getSalesPerHourList();
-alkiSales.getSum();
 
-//store the hour output in an array
+//call functions to genernate salesPerHourList
+pikeSales.getSalesPerHourList();
+airportSales.getSalesPerHourList();
+seattleCenterSales.getSalesPerHourList();
+capitalHillSales.getSalesPerHourList();
+alkiSales.getSalesPerHourList();
+
+//store the hour output in an array hourList
 var hourList = [''];
 var hourText = 6;
 var j = 6;
@@ -92,6 +72,13 @@ for (j = 6; j < 21; j++) {
   }
 }
 
+//store the sum of 5 different location sales per hour
+var totalSales = [];
+
+for(var k = 0; k < 15; k++) {
+  totalSales[k] = pikeSales.salesPerHourList[k] + airportSales.salesPerHourList[k] + seattleCenterSales.salesPerHourList[k] + capitalHillSales.salesPerHourList[k] + alkiSales.salesPerHourList[k];
+}
+
 // generate the table on the browser
 //create a table
 var parentElement = document.getElementById('sales');
@@ -103,9 +90,9 @@ article.appendChild(table);
 // create the table header
 var row_0 = document.createElement('tr');
 table.appendChild(row_0);
-for (var k = 0; k < hourList.length; k++) {
+for (var l = 0; l < hourList.length; l++) {
   var th = document.createElement('th');
-  th.textContent = hourList[k];
+  th.textContent = hourList[l];
   row_0.appendChild(th);
 }
 
@@ -123,46 +110,22 @@ function render () {
   table.appendChild(row_1);
 }
 
+//call function render to display the form
 pikeSales.render();
 airportSales.render();
 seattleCenterSales.render();
 capitalHillSales.render();
 alkiSales.render();
 
-// generate form from input and append it to the table
-var salesForm = document.getElementById('addSalesForm');
-
-salesForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  var location = event.target.location.value;
-  var avgCookie = event.target.avgCookie.value;
-  var minCustomer = event.target.minCustomer.value;
-  var maxCustomer = event.target.maxCustomer.value;
-  var newSales = new Sales(location, avgCookie, minCustomer, maxCustomer);
-  newSales.location = location;
-  newSales.avgCookie = avgCookie;
-  newSales.minCustomer = minCustomer;
-  newSales.maxCustomer = maxCustomer;
-  for (var m = 0; m < Location.length; m++)
-    if (newSales.location == Location[m]) {
-      alert ('Please input a different location from what is in the table.');
-    };
-  // newSales.inputValidation();
-  newSales.getSalesPerHourList();
-  newSales.getSum();
-  newSales.render();
-  addSalesForm.reset();
-});
-
-//TODO: Strech goal
+// //TODO: Strech goal
 //creater the table footer
-// var row_2 = document.createElement('tr');
-// var td = document.createElement('td');
-// td.textContent = 'Totals';
-// row_2.appendChild(td);
-// for (var m = 0; m < 15; m++) {
-//   td = document.createElement('td');
-//   td.textContent = this.salesPerHourList;
-//   row_2.appendChild(td);
-// }
-// table.appendChild(row_2);
+var row_2 = document.createElement('tr');
+var td = document.createElement('td');
+td.textContent = 'Totals';
+row_2.appendChild(td);
+for (var m = 0; m < 15; m++) {
+  td = document.createElement('td');
+  td.textContent = totalSales[m];
+  row_2.appendChild(td);
+}
+table.appendChild(row_2);
