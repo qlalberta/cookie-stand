@@ -56,7 +56,7 @@ airportSales.getSales();
 airportSales.getSalesPerHourList();
 airportSales.getSum();
 
-var seattleCenterSales = new Sales(avgCookie[0][0],avgCookie[2][1],minCustomer[2][1],maxCustomer[2][1]);
+var seattleCenterSales = new Sales(avgCookie[2][0],avgCookie[2][1],minCustomer[2][1],maxCustomer[2][1]);
 seattleCenterSales.getSales();
 seattleCenterSales.getSalesPerHourList();
 seattleCenterSales.getSum();
