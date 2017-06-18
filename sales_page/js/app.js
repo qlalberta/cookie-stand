@@ -19,7 +19,6 @@ function Sales (location, avgCookie, minCus, maxCus) {
   this.maxCus = maxCus;
   this.salesPerHourList = [];
   this.sum = 0;
-  this.sumList = [];
 }
 
 //create prototype method getSales()
@@ -156,7 +155,6 @@ salesForm.addEventListener('submit', function(event) {
 });
 
 //TODO: Strech goal
-
 //creater the table footer
 // var row_2 = document.createElement('tr');
 // var td = document.createElement('td');
