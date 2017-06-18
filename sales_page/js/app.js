@@ -140,12 +140,3 @@ salesForm.addEventListener('submit', function(event) {
   newSales.render();
   addSalesForm.reset();
 });
-
-//Todo: stretch goal-create footer
-// var row_0 = document.createElement('tr');
-// table.appendChild(row_0);
-// for (var m = 0; m < 16; m++) {
-//   var td = document.createElement('td');
-//   td.textContent = this.sum;
-//   row_0.appendChild(th);
-// }
