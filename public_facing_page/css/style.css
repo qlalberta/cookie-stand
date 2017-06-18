@@ -1,0 +1,11 @@
+body {
+  background: black;
+  margin: 0;
+  text-align: center;
+}
+
+p {
+  font-family: 'Poiret One', cursive;
+  font-size: 40px;
+  color: white;
+}
