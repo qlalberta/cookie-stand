@@ -8,8 +8,20 @@
 <body>
   <div id="sales">
     <article>
-      <div class="row">
-      <h1 class="column col-12">Pat's Salmon Cookies</h1>
+      <form id="addSalesForm">
+        <fieldset>
+            <legend>Sales information</legend>
+            <lable>Location</label>
+            <input name = "location" type = "text"/>
+            <label for = "avgCookie">Avg cookie</label>
+            <input name = "avgCookie" type = "number"/>
+            <label>min Customer</label>
+            <input name = "minCustomer" type = "number"/>
+            <label>max Customer</label>
+            <input name = "maxCustomer" type = "number"/>
+          </fieldset>
+          <input type="submit"/>
+       </form>
     </article>
   </div>
   <script src="js/app.js"></script>

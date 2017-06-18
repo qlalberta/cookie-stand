@@ -117,15 +117,36 @@ seattleCenterSales.render();
 capitalHillSales.render();
 alkiSales.render();
 
-// //TODO: Strech goal
-//creater the table footer
-var row_2 = document.createElement('tr');
-var td = document.createElement('td');
-td.textContent = 'Totals';
-row_2.appendChild(td);
-for (var m = 0; m < 15; m++) {
-  td = document.createElement('td');
-  td.textContent = totalSales[m];
-  row_2.appendChild(td);
-}
-table.appendChild(row_2);
+// generate form from input and append it to the table
+var salesForm = document.getElementById('addSalesForm');
+
+salesForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  var location = event.target.location.value;
+  var avgCookie = event.target.avgCookie.value;
+  var minCustomer = event.target.minCustomer.value;
+  var maxCustomer = event.target.maxCustomer.value;
+  var newSales = new Sales(location, avgCookie, minCustomer, maxCustomer);
+  newSales.location = location;
+  newSales.avgCookie = avgCookie;
+  newSales.minCustomer = minCustomer;
+  newSales.maxCustomer = maxCustomer;
+  for (var m = 0; m < Location.length; m++)
+    if (newSales.location == Location[m]) {
+      alert ('Please input a different location from what is in the table.');
+    };
+  // newSales.inputValidation();
+  newSales.getSalesPerHourList();
+  newSales.getSum();
+  newSales.render();
+  addSalesForm.reset();
+});
+
+//Todo: stretch goal-create footer
+// var row_0 = document.createElement('tr');
+// table.appendChild(row_0);
+// for (var m = 0; m < 16; m++) {
+//   var td = document.createElement('td');
+//   td.textContent = this.sum;
+//   row_0.appendChild(th);
+// }
