@@ -1,11 +1,223 @@
 body {
-  background-color: black;
-  color: yellow;
+  background: black url("../images/image-salmon/gray-ppt-background-19.jpg");
+  margin: 0;
   text-align: center;
 }
 
+#nav {
+text-align: right;
+}
+
+#nav li {
+  margin: 10px 20px 20px 5px;
+  padding: 1px;
+  display: inline;
+  font-family: 'Poiret One', cursive;
+  font-size: 100%;
+}
+
+li a {
+    color: #bd4a0a;
+    text-decoration: none;
+}
+
+li a:hover {
+     color:#dce7e2;
+     text-decoration: none;
+     cursor:pointer;
+}
+
+#blocklist {
+text-align: center;
+margin-top: 40px;
+}
+
+#blocklist li {
+  margin: 20px 20px 20px 5px;
+  padding: 1px;
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 100%;
+}
+
 h1 {
-  font-size: 400%;
+  font-size: 450%;
   font-family: 'Princess Sofia', cursive;
-  color: yellow;
+  color: rgba(#0d0c09, 0.88);
+  margin-top:100px;
+}
+
+h3 {
+  font-size:20px;
+}
+
+h4 {
+  text-align: center;
+  font-size:150%;
+  margin: 10px 10px 10px 120px;
+}
+
+img.align-left {
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
+  width:300px;
+  height:200px;
+}
+
+img.align-right {
+  float: right;
+  margin-top: 0px;
+  margin-left: 10px;
+  width:300px;
+  margin: 10px;
+  height:200px;
+
+}
+
+img.align-center {
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
+  width:300px;
+  height:200px;
+}
+
+#about  {
+  margin-top:100px;
+  border-style: groove;
+  background-color: rgb(142, 96, 49);
+  font-size:200%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color:;
+}
+
+#mechandise  {
+  margin-top:100px;
+  border-style: groove;
+  background-color: rgb(142, 96, 49);
+  font-size:200%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#events {
+  margin-top:100px;
+  border-style: groove;
+  background-color: rgb(142, 96, 49);
+  font-size:200%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#contactus {
+  margin-top:100px;
+  border-style: groove;
+  background-color: rgb(142, 96, 49);
+  font-size:200%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#block1 {
+  display:blcok;
+  font-size:30px;
+  font-family: Georgia, serif;
+}
+#block2 {
+  display:blcok;
+  font-size:30px;
+  font-family: Georgia, serif;
+}
+#block3 {
+  display:blcok;
+  font-size:30px;
+  font-family: Georgia, serif;
+}
+#footer {
+text-align: center;
+}
+
+#footer li {
+  margin: 10px 20px 20px 5px;
+  padding: 1px;
+  display: block;
+  font-family: 'Poiret One', cursive;
+  font-size: 100%;
+  color:black;
+}
+
+/*implement grid*/
+.row,
+.column {
+  box-sizing: border-box;
+}
+
+.row::before,
+.row::after {
+  content: "";
+  display: table;
+}
+
+.row::after {
+  clear:both;
+}
+
+.column {
+  position: relative;
+  float: left;
+}
+
+
+/*one column is 8.33% wide*/
+
+.col-1 {
+  width: 8.33%;
+}
+
+.col-2 {
+  width: 16.66%;
+}
+
+.col-3 {
+  width: 24.98%;
+}
+
+.col-4 {
+  width: 33.32%;
+  float:right;
+}
+
+.col-5 {
+  width: 41.65%;
+}
+
+.col-6 {
+  width: 50%;
+  font-size:130%;
+  color:black;
+  background-color: rgb(199, 128, 62);
+  border:solid black 5px;
+}
+
+.col-7 {
+  width: 58.3%
+;
+}
+
+.col-8 {
+  width: 66.66%
+}
+
+.col-9 {
+  width: 74.97%
+}
+
+.col-10 {
+  width: 83.3%
+}
+
+.col-11 {
+  width: 91.66%
+}
+
+.col-12 {
+  width: 100%;
 }
