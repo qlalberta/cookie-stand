@@ -147,7 +147,6 @@ airportSales.renderRows();
 seattleCenterSales.renderRows();
 capitalHillSales.renderRows();
 alkiSales.renderRows();
-renderTotalSales();
 
 // generate form from input and append it to the table
 var salesForm = document.getElementById('addSalesForm');
@@ -155,10 +154,11 @@ var salesForm = document.getElementById('addSalesForm');
 salesForm.addEventListener('submit', function(event) {
   event.preventDefault();
   var location = event.target.location.value;
-  var avgCookie = event.target.avgCookie.value;
-  var minCustomer = event.target.minCustomer.value;
-  var maxCustomer = event.target.maxCustomer.value;
+  var avgCookie = parseInt(event.target.avgCookie.value);
+  var minCustomer = parseInt(event.target.minCustomer.value);
+  var maxCustomer = parseInt(event.target.maxCustomer.value);
   var newSales = new Sales(location, avgCookie, minCustomer, maxCustomer);
+  // var totalSales = generateTotalSales();
   newSales.location = location;
   newSales.avgCookie = avgCookie;
   newSales.minCustomer = minCustomer;
@@ -169,6 +169,10 @@ salesForm.addEventListener('submit', function(event) {
       alert ('Please input a different location from what is in the table.');
     };
   newSales.getSalesPerHourList();
-  newSales.render();
+  newSales.renderRows();
+  for (var ii = 0; ii < columnNumber; ii++) {
+    totalSales[ii] += newSales.salesPerHourList[ii];
+  }
+  renderTotalSales();
   addSalesForm.reset();
 });
